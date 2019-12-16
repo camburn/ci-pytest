@@ -5,6 +5,7 @@ from collections import namedtuple
 Vector3 = namedtuple('Vector3', ['x', 'y', 'z'])
 
 class Square:
+    """ A Square class for doing square things """
     def __init__(self, position, size):
         """ Create a new square
 
