@@ -53,6 +53,9 @@ jobs:
             pip install pytest
             pytest
 
+    - store_tests_results:
+        path: test-results
+
       - store_artifacts:
           path: test-reports
           destination: test-reports
