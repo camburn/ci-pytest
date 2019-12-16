@@ -44,7 +44,7 @@ jobs:
           command: |
             . venv/bin/activate
             pip install pylint
-            pylint myproduct
+            pylint pyproduct
 
       - run:
           name: run tests
