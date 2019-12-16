@@ -53,7 +53,7 @@ jobs:
             pip install pytest
             pytest
 
-      - store_tests_results:
+      - store_test_results:
           path: test-results
 
       - store_artifacts:
