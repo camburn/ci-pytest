@@ -38,19 +38,35 @@ jobs:
           paths:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
+      # Do things before test-requirements are installed
+      - restore_cache:
+          keys:
+            - v1-test-dependencies-{{ checksum "test-requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-test-dependencies-
+
+      - run:
+          name: install test dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r test-requirements.txt
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-test-dependencies-{{ checksum "test-requirements.txt" }}
 
       - run:
           name: run linting
           command: |
             . venv/bin/activate
-            pip install pylint
             pylint pyproduct
 
       - run:
           name: run tests
           command: |
             . venv/bin/activate
-            pip install pytest
             pytest
 
       - store_test_results:
