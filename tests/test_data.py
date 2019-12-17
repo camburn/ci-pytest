@@ -8,4 +8,4 @@ def test_area():
 
 def test_perimeter():
     square = Square(Vector3(1, 1, 1), 3)
-    assert square.perimeter() == 9
+    assert square.perimeter() == 12
